@@ -6,7 +6,7 @@ Bootstrap your Ubuntu in a single command!
 
 https://github.com/tcardonne/dotfiles
 
-sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /usr/local/bin/
+sudo sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /usr/local/bin
 
 This dotfiles repository is currently aimed for [**Ubuntu on WSL**](https://ubuntu.com/wsl), [**Ubuntu Server**](https://ubuntu.com/server), and [**Ubuntu Desktop**](https://ubuntu.com/desktop), tested against versions **18.04**, **20.04**, and **22.04**. See how to get started with WSL [here](https://docs.microsoft.com/pt-br/windows/wsl/install-win10).
 
