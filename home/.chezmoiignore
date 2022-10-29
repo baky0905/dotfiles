@@ -3,7 +3,6 @@
 
 .chezmoiscripts/*
 !.chezmoiscripts/*-install-prerequisites.sh
-!.chezmoiscripts/*-initialize-zsh.sh
 !.chezmoiscripts/*-final-message.sh
 {{- end }}
 
@@ -19,5 +18,3 @@
 
 # waiting for chezmoi to leverage .gitignore from archives:
 # https://github.com/twpayne/chezmoi/issues/1421#issuecomment-964473844
-.oh-my-zsh/cache/*
-**/*.zwc
