@@ -1,0 +1,71 @@
+#!/bin/bash
+
+# {{ template "scripts-library" }}
+
+# The following line is for ShellCheck to correctly identify the above included library
+true || source ../.chezmoitemplates/scripts-library
+
+readonly wanted_packages=(
+  apt-transport-https
+  ca-certificates
+  gnupg
+  lsb-release
+  build-essential
+  curl
+  zsh
+  wget
+  tree
+  parallel
+  file
+  procps
+  zip
+  git
+  jq
+  docker-ce
+  docker-ce-cli
+  containerd.io
+  skopeo
+  asciinema
+  # {{ if .is_gnome }}
+  yaru-theme-gtk
+  yaru-theme-icon
+  yaru-theme-sound
+  gnome-tweaks
+  gnome-menus
+  code
+  google-chrome-stable
+  # {{   if eq .chezmoi.osRelease.versionCodename "bionic" }}
+  python-nautilus
+  # {{   else }}
+  python3-nautilus
+  # {{   end }}
+  # {{   if not .is_wsl }}
+  yaru-theme-gnome-shell
+  libsecret-1-0
+  gnome-menus
+  # {{   end }}
+  # {{ end }}
+  # {{ if .is_wsl }}
+  wslu
+  # {{ else }}
+  # {{   if eq .chezmoi.osRelease.versionCodename "bionic" }}
+  linux-generic-hwe-18.04
+  # {{   else if eq .chezmoi.osRelease.versionCodename "focal" }}
+  linux-generic-hwe-20.04
+  # {{   end }}
+  # {{ end }}
+)
+missing_packages=()
+
+for package in "${wanted_packages[@]}"; do
+  if ! is_apt_package_installed "${package}"; then
+    missing_packages+=("${package}")
+  fi
+done
+
+if [[ ${#missing_packages[@]} -gt 0 ]]; then
+  log_task "Installing missing packages with APT: ${missing_packages[*]}"
+
+  c apt update --yes
+  c apt install --yes --install-recommends "${missing_packages[@]}"
+fi

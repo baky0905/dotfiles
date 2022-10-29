@@ -1,0 +1,9 @@
+[credential]
+helper = /usr/local/bin/git-credential-manager-core
+{{   if .is_wsl -}}
+credentialStore = wincredman
+{{   else if .is_gnome -}}
+credentialStore = secretservice
+{{   else -}}
+credentialStore = plaintext
+{{   end -}}

@@ -1,0 +1,64 @@
+{
+  "recommendations": [
+    "mads-hartmann.bash-ide-vscode",
+    "timonwong.shellcheck",
+    "foxundermoon.shell-format",
+    "editorconfig.editorconfig",
+     // must
+
+    // themes & icons
+    "oderwat.indent-rainbow",
+    "RobbOwen.synthwave-vscode",
+    "vscode-icons-team.vscode-icons",
+
+    // life savers!
+    //"GitHub.copilot",
+    "usernamehw.errorlens",
+    "streetsidesoftware.code-spell-checker",
+    "njpwerner.autodocstring",
+    "aaron-bond.better-comments",
+    "ms-azuretools.vscode-docker",
+    "natqe.reload",
+    
+    // AWS
+    "amazonwebservices.aws-toolkit-vscode",
+    "thundra.thundra-debugger",
+    "boto3typed.boto3-ide",
+    // git
+    "mhutchie.git-graph",
+    
+    // python
+    "ms-python.python",
+    "KevinRose.vsc-python-indent",
+    "frhtylcn.pythonsnippets",
+    "ms-python.vscode-pylance",
+    "spmeesseman.svn-scm-ext",
+    "littlefoxteam.vscode-python-test-adapter",
+    
+    // up to you
+    "eamodio.gitlens",
+    //"EditorConfig.EditorConfig",
+    "mpontus.tab-cycle",
+    "richie5um2.vscode-sort-json",
+    "unional.vscode-sort-package-json",
+    //"WakaTime.vscode-wakatime",
+    "znck.grammarly",
+    "alefragnani.Bookmarks",
+    "johnpapa.vscode-cloak",
+    "formulahendry.code-runner",
+    "unbug.codelf",
+    "mikestead.dotenv",
+    "sleistner.vscode-fileutils",
+    "ritwickdey.LiveServer",
+    "christian-kohler.path-intellisense",
+    "johnpapa.vscode-peacock",
+    "pnp.polacode",
+    "esbenp.prettier-vscode",
+    "ms-vscode-remote.remote-containers",
+    "ms-vscode-remote.remote-wsl",
+    //"TabNine.tabnine-vscode",
+    "Gruntfuggly.todo-tree",
+    "mechatroner.rainbow-csv",
+    "almenon.arepl"
+  ]
+}
