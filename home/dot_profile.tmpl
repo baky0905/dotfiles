@@ -15,10 +15,6 @@ elif [ -x "${HOME}/.linuxbrew/bin/brew" ]; then
   eval "$("${HOME}/.linuxbrew/bin/brew" shellenv)"
 fi
 
-if [ -d "${HOME}/.volta/bin" ]; then
-  export VOLTA_HOME="${HOME}/.volta"
-  export PATH="${VOLTA_HOME}/bin:${PATH}"
-fi
 
 if [ -d "${HOME}/.deno/bin" ]; then
   export DENO_INSTALL="${HOME}/.deno"

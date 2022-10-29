@@ -8,8 +8,6 @@
 {{- end }}
 
 {{ if not .is_gnome -}}
-.chezmoiscripts/*-install-gnome-extensions.sh
-.chezmoiscripts/*-configure-gnome.sh
 .chezmoiscripts/*-install-vscode-extensions.sh
 {{- end }}
 

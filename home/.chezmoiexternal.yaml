@@ -39,28 +39,6 @@
   url: "https://github.com/direnv/direnv/releases/download/v{{ template "get-github-latest-version" list "direnv/direnv" $cache }}/direnv.linux-{{ .chezmoi.arch }}"
   executable: true
 
-".local/bin/kubectx":
-  type: file
-  url: "https://github.com/ahmetb/kubectx/raw/{{ template "get-github-head-revision" list "ahmetb/kubectx" $cache }}/kubectx"
-  executable: true
-
-".oh-my-zsh/custom/plugins/my-completions/_kubectx.zsh":
-  type: file
-  url: "https://github.com/ahmetb/kubectx/raw/{{ template "get-github-head-revision" list "ahmetb/kubectx" $cache }}/completion/_kubectx.zsh"
-
-".local/bin/kubens":
-  type: file
-  url: "https://github.com/ahmetb/kubectx/raw/{{ template "get-github-head-revision" list "ahmetb/kubectx" $cache }}/kubens"
-  executable: true
-
-".oh-my-zsh/custom/plugins/my-completions/_kubens.zsh":
-  type: file
-  url: "https://github.com/ahmetb/kubectx/raw/{{ template "get-github-head-revision" list "ahmetb/kubectx" $cache }}/completion/_kubens.zsh"
-
-".volta/bin":
-  type: archive
-  url: "https://github.com/volta-cli/volta/releases/download/v{{ template "get-github-latest-version" list "volta-cli/volta" $cache }}/volta-{{ template "get-github-latest-version" list "volta-cli/volta" $cache }}-linux.tar.gz"
-
 {{ if not .is_devcontainer -}}
 {{   if .is_gnome -}}
 ".local/share/nautilus-python/extensions/code-nautilus.py":
@@ -76,11 +54,6 @@
 
 {{-   end }}
 
-".deno/bin":
-  type: archive
-  url: "https://github.com/denoland/deno/releases/download/v{{ template "get-github-latest-version" list "denoland/deno" $cache }}/deno-x86_64-unknown-linux-gnu.zip"
-  include:
-    - deno
 
 ".docker/cli-plugins/docker-compose":
   type: file
