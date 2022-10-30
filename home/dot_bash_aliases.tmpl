@@ -66,4 +66,85 @@ gac() {
   git commit -m "${1}"
 }
 
+# File management
+# -----------------------------------------------------------------------------
+
+# Copies a file securely.
+alias cpv='rsync -ah --info=progress2'
+
+# Finds directories.
+alias fd='find . -type d -name'
+
+# Finds files.
+alias ff='find . -type f -name'
+
+
+# General aliases
+# -----------------------------------------------------------------------------
+
+# Clears the console screen.
+alias c='clear'
+
+# Searches history.
+alias h='history_search' # see file `functions`
+alias hs='history_session_search' # see file `functions`
+
+
+# Time
+# -----------------------------------------------------------------------------
+
+# Gets local/UTC date and time in ISO-8601 format `YYYY-MM-DDThh:mm:ss`.
+alias now='date +"%Y-%m-%dT%H:%M:%S"'
+alias unow='date -u +"%Y-%m-%dT%H:%M:%S"'
+
+# Gets date in `YYYY-MM-DD` format`
+alias nowdate='date +"%Y-%m-%d"'
+alias unowdate='date -u +"%Y-%m-%d"'
+
+# Gets time in `hh:mm:ss` format`
+alias nowtime='date +"%T"'
+alias unowtime='date -u +"%T"'
+
+# Gets Unix time stamp`
+alias timestamp='date -u +%s'
+
+# Gets week number in ISO-8601 format `YYYY-Www`.
+alias week='date +"%Y-W%V"'
+
+# Gets weekday number.
+alias weekday='date +"%u"'
+
+
+# Sysadmin
+# -----------------------------------------------------------------------------
+
+
+# Prints each $PATH entry on a separate line.
+alias path='echo -e ${PATH//:/\\n}'
+
+# Displays information about the system.
+for command in winfetch neofetch screenfetch; do
+    if type $command &> /dev/null; then
+        alias sysinfo='$command'
+        break
+    fi
+done
+
+# Development
+# -----------------------------------------------------------------------------
+
+# Creates shortcuts for Docker.
+alias dk='docker'
+alias dco='docker-compose'
+
+# Creates shortcut for Git.
+alias g='git'
+
+# Activates Python virtual environment `venv`.
+alias va='if [ -d ./.venv ]; then \. ./.venv/bin/activate; elif [ -d ./venv ]; then \. ./venv/bin/activate; fi'
+
+# Creates Python virtual environment `venv`.
+alias ve='python3 -m venv ./.venv'
+
+
 # {{ end }}
