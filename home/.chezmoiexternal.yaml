@@ -8,6 +8,22 @@
   url: "https://github.com/direnv/direnv/releases/download/v{{ template "get-github-latest-version" list "direnv/direnv" $cache }}/direnv.linux-{{ .chezmoi.arch }}"
   executable: true
 
+{{ if not .is_devcontainer -}}
+{{   if .is_gnome -}}
+".local/share/nautilus-python/extensions/code-nautilus.py":
+  type: file
+  url: "https://raw.githubusercontent.com/harry-cpp/code-nautilus/{{ template "get-github-head-revision" list "harry-cpp/code-nautilus" $cache }}/code-nautilus.py"
+
+{{      if not .is_wsl -}}
+".local/bin/gnome-shell-extension-installer":
+  type: file
+  url: "https://raw.githubusercontent.com/brunelli/gnome-shell-extension-installer/{{ template "get-github-head-revision" list "brunelli/gnome-shell-extension-installer" $cache }}/gnome-shell-extension-installer"
+  executable: true
+{{-     end }}
+
+{{-   end }}
+
+
 ".docker/cli-plugins/docker-compose":
   type: file
   url: "https://github.com/docker/compose/releases/download/v{{ template "get-github-latest-version" list "docker/compose" $cache }}/docker-compose-linux-x86_64"
