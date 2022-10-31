@@ -134,6 +134,4 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Navigating around
-alias ..='cd ..'
-alias ...='cd ../..'
+

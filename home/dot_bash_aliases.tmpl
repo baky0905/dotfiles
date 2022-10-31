@@ -11,18 +11,6 @@ refreshenv() {
     exec "${shell}"
 }
 
-mcd() {
-  local dir="$1"
-
-  mkdir -p "${dir}" &&
-    cd "${dir}"
-}
-
-cdr() {
-  local repo="${1:-}"
-
-  cd "${HOME}/repos/${repo}"
-}
 
 # See: https://github.com/twpayne/chezmoi/issues/854#issuecomment-675160348
 chezmoi-re-run-scripts() { (
@@ -49,25 +37,12 @@ cdw() {
     cd "${win_home}"
 }
 
-g() {
-  git
-}
-
-ga() {
-  git add .
-}
-
-gc() {
-  git commit -m "${1}"
-}
-
-gac() {
-  git add .
-  git commit -m "${1}"
-}
-
 # File management
 # -----------------------------------------------------------------------------
+
+# Navigating around
+alias ..='cd ..'
+alias ...='cd ../..'
 
 # Copies a file securely.
 alias cpv='rsync -ah --info=progress2'
@@ -77,6 +52,19 @@ alias fd='find . -type d -name'
 
 # Finds files.
 alias ff='find . -type f -name'
+
+mcd() {
+  local dir="$1"
+
+  mkdir -p "${dir}" &&
+    cd "${dir}"
+}
+
+cdr() {
+  local repo="${1:-}"
+
+  cd "${HOME}/repos/${repo}"
+}
 
 
 # General aliases
@@ -138,7 +126,22 @@ alias dk='docker'
 alias dco='docker-compose'
 
 # Creates shortcut for Git.
-alias g='git'
+g() {
+  git
+}
+
+ga() {
+  git add .
+}
+
+gc() {
+  git commit -m "${1}"
+}
+
+gac() {
+  git add .
+  git commit -m "${1}"
+}
 
 # Activates Python virtual environment `venv`.
 alias va='if [ -d ./.venv ]; then \. ./.venv/bin/activate; elif [ -d ./venv ]; then \. ./venv/bin/activate; fi'
