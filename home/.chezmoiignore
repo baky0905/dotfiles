@@ -1,19 +1,14 @@
 {{ if .is_devcontainer -}}
 .local/bin/code
-
 .chezmoiscripts/*
 !.chezmoiscripts/*-install-prerequisites.sh
 !.chezmoiscripts/*-final-message.sh
 {{- end }}
 
-{{ if not .is_gnome -}}
-.chezmoiscripts/*-install-vscode-extensions.sh
-{{- end }}
 
 {{ if not .is_wsl -}}
 .chezmoiscripts/*-sync-wsl-ssh-keys.sh
-{{- else -}}
-.chezmoiscripts/*-install-gnome-extensions.sh
+.chezmoiscripts/*-install-vscode-extensions.sh
 {{- end }}
 
 # waiting for chezmoi to leverage .gitignore from archives:
