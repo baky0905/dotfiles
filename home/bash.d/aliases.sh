@@ -2,22 +2,22 @@
 #                         G e n e r a l   A l i a s e s
 # ============================================================================ #
 
-#bash_tools="${bash_tools:-$(dirname "${BASH_SOURCE[0]}")/..}"
-bash_tools="${HOME}/.dotfiles/home"
+bash_tools="${bash_tools:-$(dirname "${BASH_SOURCE[0]}")/..}"
+
 # shellcheck disable=SC1090
-. "$bash_tools/.bash.d/os_detection.sh"
+. "${bash_tools}/.bash.d/os_detection.sh"
 
 # shellcheck disable=SC1090
 #. "$bash_tools/.bash.d/paths.sh"
 
 # manual local aliases
 # shellcheck disable=SC1090
-[ -f ~/.aliases ] && . ~/.aliases
+[[ -f ~/.aliases ]] && . ~/.aliases
 
 # bash_tools defined in .bashrc
 # shellcheck disable=SC2154
 export bashrc=~/.bashrc
-export bashrc2="$bash_tools/.bashrc"
+export bashrc2="${bash_tools}/.bashrc"
 alias reload='. $bashrc'
 alias r='reload'
 alias rq='set +x; . $bashrc; set -x'
@@ -48,7 +48,7 @@ alias se=screenrc
 
 # not present on Mac
 #type tailf &>/dev/null || alias tailf="tail -f"
-alias tailf="tail -f"  # tail -f is better than tailf anyway
+alias tailf="tail -f" # tail -f is better than tailf anyway
 alias mv='mv -i'
 alias cp='cp -i'
 #alias rm='rm -i'
@@ -89,7 +89,7 @@ export bt
 alias bt='sti bt; cd $bt'
 
 # shellcheck disable=SC2154
-export bashd="$bash_tools/.bash.d"
+export bashd="${bash_tools}/.bash.d"
 alias bashd='sti bashd; cd $bashd'
 
 #alias cleanshell='exec env - bash --rcfile /dev/null'
@@ -110,8 +110,8 @@ export LS_OPTIONS='-F'
 if is_mac; then
     export CLICOLOR=1 # equiv to using -G switch when calling
 else
-    export LS_OPTIONS="$LS_OPTIONS --color=auto"
-    export PS_OPTIONS="$LS_OPTIONS -L"
+    export LS_OPTIONS="${LS_OPTIONS} --color=auto"
+    export PS_OPTIONS="${LS_OPTIONS} -L"
 fi
 
 alias ls='ls $LS_OPTIONS'
@@ -125,10 +125,10 @@ alias ltr='lr'
 alias lR='ls -lRh $LS_OPTIONS'
 
 # shellcheck disable=SC2086
-lw(){ ls -lh $LS_OPTIONS "$(type -P "$@")"; }
+lw() { ls -lh ${LS_OPTIONS} "$(type -P "$@")"; }
 
 # shellcheck disable=SC2086,SC2012
-lll(){ ls -l $LS_OPTIONS "$(readlink -f "${@:-.}")" | less -R; }
+lll() { ls -l ${LS_OPTIONS} "$(readlink -f "${@:-.}")" | less -R; }
 
 alias cd..='cd ..'
 alias ..='cd ..'
@@ -150,8 +150,8 @@ alias run='run.sh'
 # ============================================================================ #
 
 export github=~/github
-alias github="sti github; cd '$github'";
-export work="$github/work"
+alias github="sti github; cd '${github}'"
+export work="${github}/work"
 #alias work="sti work; cd '$work'"
 
 export bitbucket=~/bitbucket
@@ -161,45 +161,44 @@ alias bitb='cd $bitbucket'
 # used to gitbrowse to bitbucket now in git.sh
 #alias bb=bitbucket
 
-for basedir in "$github" "$bitbucket"; do
-    if [ -d "$basedir" ]; then
-        for directory in "$basedir/"*; do
-            [ -d "$directory" ] || continue
+for basedir in "${github}" "${bitbucket}"; do
+    if [[ -d "${basedir}" ]]; then
+        for directory in "${basedir}/"*; do
+            [[ -d "${directory}" ]] || continue
             name="${directory##*/}"
             name="${name//-/_}"
             name="${name//./_}"
             name="${name// /}"
             # alias terraform /tf -> terra
-            if [[ "$name" =~ ^(terraform|tf)$ ]]; then
+            if [[ "${name}" =~ ^(terraform|tf)$ ]]; then
                 name="terra"
             fi
-            export "$name"="$directory"
+            export "${name}"="${directory}"
             # don't clash with any binaries
-            if ! type -P "$name" &>/dev/null; then
+            if ! type -P "${name}" &>/dev/null; then
                 # shellcheck disable=SC2139,SC2140
-                alias "$name"="sti $name; cd $directory"
-            elif ! type -P "g$name" &>/dev/null; then
+                alias "${name}"="sti ${name}; cd ${directory}"
+            elif ! type -P "g${name}" &>/dev/null; then
                 # shellcheck disable=SC2139,SC2140
-                alias "g$name"="sti $name; cd $directory"
+                alias "g${name}"="sti ${name}; cd ${directory}"
             fi
         done
     fi
 done
 
-
-doc_alias(){
+doc_alias() {
     local docpath="$1"
-    [ -f "$docpath" ] || return 1
+    [[ -f "${docpath}" ]] || return 1
     docfile="${docpath##*/}"
     # slows down shell creation, will drain battery
-#    if [ -L "$docpath" ]; then
-#        # brew install coreutils to get greadlink since Mac doesn't have readlink -f
-#        if type -P greadlink &>/dev/null; then
-#            docfile="$(greadlink -f "$docpath")"
-#        else
-#            docfile="$(readlink -f "$docpath")"
-#        fi
-#    fi
+    #    if [ -L "$docpath" ]; then
+    #        # brew install coreutils to get greadlink since Mac doesn't have readlink -f
+    #        if type -P greadlink &>/dev/null; then
+    #            docfile="$(greadlink -f "$docpath")"
+    #        else
+    #            docfile="$(readlink -f "$docpath")"
+    #        fi
+    #    fi
     #local count=0
     #[ -f ~/docs/$docfile ] && ((count+=1))
     #[ -f "$github/docs/$docfile" ] && ((count+=1))
@@ -209,11 +208,11 @@ doc_alias(){
     #    return
     #fi
     # shellcheck disable=SC2139,SC2140
-    alias "d$docfile"="ti ${docpath##*/}; \$EDITOR $docpath"
+    alias "d${docfile}"="ti ${docpath##*/}; \$EDITOR ${docpath}"
 }
 
-for x in ~/docs/* "$github"/docs/* "$bitbucket"/docs/*; do
-    doc_alias "$x" || :
+for x in ~/docs/* "${github}"/docs/* "${bitbucket}"/docs/*; do
+    doc_alias "${x}" || :
 done
 
 # ============================================================================ #
@@ -224,7 +223,7 @@ alias anonymize='anonymize.py'
 alias an='anonymize -a'
 alias bc='bc -l'
 alias chromekill='pkill -f "Google Chrome Helper"'
-alias eclipse='~/eclipse/Eclipse.app/Contents/MacOS/eclipse';
+alias eclipse='~/eclipse/Eclipse.app/Contents/MacOS/eclipse'
 alias visualvm='~/visualvm/bin/visualvm'
 
 alias tmpl=templates
@@ -234,13 +233,13 @@ pmd_opts="-R rulesets/java/quickstart.xml -f text"
 if is_mac; then
     # yes evaluate $pmd_opts here
     # shellcheck disable=SC2139
-    pmd="pmd $pmd_opts"
+    pmd="pmd ${pmd_opts}"
 else
     for x in ~/pmd-bin-*; do
-        if [ -f "$x/bin/run.sh" ]; then
+        if [[ -f "${x}/bin/run.sh" ]]; then
             # yes evaluate $x here, and don't export it's lazy evaluated in alias below
             # shellcheck disable=SC2139,SC2034
-            pmd="$x/bin/run.sh pmd $pmd_opts"
+            pmd="${x}/bin/run.sh pmd ${pmd_opts}"
         fi
     done
 fi
@@ -256,7 +255,6 @@ alias uniqfiles="sed 's/:.*//;/^[[:space:]]*$/d' | sort -u"
 export etc=~/etc
 alias etc='cd $etc'
 
-
 alias distro='cat /etc/*release /etc/*version 2>/dev/null'
 alias trace=traceroute
 alias t='$EDITOR ~/tmp'
@@ -266,7 +264,6 @@ alias t2='$EDITOR ~/tmp2'
 alias t3='$EDITOR ~/tmp3'
 #alias tg='traceroute www.google.com'
 #alias sec='ps -ef| grep -e arpwatc[h] -e swatc[h] -e scanlog[d]'
-
 
 export lab=~/lab
 alias lab='cd $lab'
@@ -278,19 +275,19 @@ export Downloads=~/Downloads
 export Documents=~/Documents
 alias Downloads='cd "$Downloads"'
 alias Documents='cd "$Documents"'
-export down="$Downloads"
-export docu="$Documents"
+export down="${Downloads}"
+export docu="${Documents}"
 alias down='cd "$Downloads"'
 alias docu='cd "$Documents"'
 alias doc='cd ~/docs'
 
 export desktop=~/Desktop
-export desk="$desktop"
+export desk="${desktop}"
 alias desktop='cd "$desktop"'
 alias desk=desktop
 
 export bin=~/bin
-alias bin="cd $bin"
+alias bin="cd ${bin}"
 
 alias todo='ti T; $EDITOR ~/TODO'
 alias TODO="todo"
@@ -299,7 +296,7 @@ alias DON=don
 
 # drive => Google Drive
 export google_drive=~/drive
-export drive="$google_drive"
+export drive="${google_drive}"
 alias drive='cd "$drive"'
 
 for v in ~/github/pytools/validate_*.py; do
@@ -308,7 +305,7 @@ for v in ~/github/pytools/validate_*.py; do
     z="${z%.py}"
     # needs to expand now for dynamic alias creation
     # shellcheck disable=SC2139,SC2140
-    alias "v$z"="$v"
+    alias "v${z}"="${v}"
 done
 
 # in some environments I do ldap with Kerberos auth - see ldapsearch.sh script at top level which is more flexible with pre-tuned environment variables
