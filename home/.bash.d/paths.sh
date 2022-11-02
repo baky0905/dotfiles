@@ -134,19 +134,19 @@ fi
 #         done
 # }
 
-dedupe_paths() {
-    local PATH_tmp=""
-    # <( ) only works in Bash, but breaks when sourced from sh
-    # <( ) also ignores errors which don't get passed through the /dev/fd
-    # while read -r path; do
-    #done < <(tr ':' '\n' <<< "$PATH")
-    local IFS=':'
-    for path in ${PATH}; do
-        add_PATH PATH_tmp "${path}"
-    done
-    export PATH="${PATH_tmp}"
-}
+# dedupe_paths() {
+#     local PATH_tmp=""
+#     # <( ) only works in Bash, but breaks when sourced from sh
+#     # <( ) also ignores errors which don't get passed through the /dev/fd
+#     # while read -r path; do
+#     #done < <(tr ':' '\n' <<< "$PATH")
+#     local IFS=':'
+#     for path in ${PATH}; do
+#         add_PATH PATH_tmp "${path}"
+#     done
+#     export PATH="${PATH_tmp}"
+# }
 
-dedupe_paths
+# dedupe_paths
 
 export PATHS_SET=1
