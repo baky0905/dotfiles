@@ -14,8 +14,7 @@ if type add_PATHS &>/dev/null && [[ -n "${PATHS_SET:-}" ]]; then
     return
 fi
 
-bash_tools="${bash_tools:-$(dirname "${BASH_SOURCE[0]}")/..}"
-
+bash_tools="${HOME}/.dotfiles/home"
 # unreliable that HOME is set, ensure shell evaluates to the right thing before we use it
 [[ -n "${HOME:-}" ]] || HOME=~
 
