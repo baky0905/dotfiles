@@ -33,12 +33,6 @@
 
 [[ -n "${PERLBREW_PERL:-}" ]] && return
 
-# Another alternative
-#case $- in
-#   *i*) ;;
-#     *) return 0;;
-#esac
-
 # Another variation
 #if [[ $- != *i* ]] ; then
 #    # Shell is non-interactive.  Be done now!
