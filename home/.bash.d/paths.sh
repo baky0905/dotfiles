@@ -44,7 +44,7 @@ add_PATH() {
     # fix for Codeship having a space after one of the items in their $PATH, causing the second half of the $PATH to error out as a command
     eval "${env_var}"="${!env_var//[[:space:]]/}"
     eval "${env_var}"="${!env_var##:}"
-    export "${env_var?env_var not defined in add_PATH}"
+    #export "${env_var?env_var not defined in add_PATH}"
 }
 
 # use 'which -a'
