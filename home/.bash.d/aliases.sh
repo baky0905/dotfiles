@@ -35,17 +35,6 @@ alias be2=bashrc2
 alias be3=bashrc3
 alias ve=vimrc
 alias se=screenrc
-# keep emacs with no window, use terminal, not X, otherwise I'd run xemacs...
-#alias emacs="emacs -nw"
-#em(){ emacs "$@" ; }
-#alias em=emacs
-#alias e=em
-#xe(){ xemacs $@ & }
-#alias x=xe
-
-# from DevOps-Perl-tools repo which must be in $PATH
-# done via functions.sh now
-#alias new=new.pl
 
 # not present on Mac
 #type tailf &>/dev/null || alias tailf="tail -f"
@@ -79,11 +68,6 @@ alias paths=path
 
 alias tmp="cd /tmp"
 
-# not as compatible, better to call pypy explicitly or in #! line
-#if type -P pypy &>/dev/null; then
-#    alias python=pypy
-#fi
-
 # shellcheck disable=SC2139
 bt="$(dirname "${BASH_SOURCE[0]}")/.."
 export bt
@@ -93,7 +77,6 @@ alias bt='sti bt; cd $bt'
 export bashd="${bash_tools}/.bash.d"
 alias bashd='sti bashd; cd $bashd'
 
-#alias cleanshell='exec env - bash --rcfile /dev/null'
 alias cleanshell='exec env - bash --norc --noprofile'
 alias newshell='exec bash'
 alias rr='newshell'
@@ -139,30 +122,27 @@ alias ....='cd ../../..'
 #alias ~='cd ~'
 
 alias screen='screen -T $TERM'
-#alias mt=multitail
-#alias halt='shutdown -h now -P'
-# my pytools github repo
 alias ht='headtail.py'
 
 alias run='run.sh'
 
 # ============================================================================ #
-#                      G i t H u b   /   B i t B u c k e t
+#                      G i t H u b   /   B i t B u c k e t / G i t L a b
 # ============================================================================ #
-
-export github=~/github
-alias github="sti github; cd '${github}'"
-export work="${github}/work"
-#alias work="sti work; cd '$work'"
-
-export bitbucket=~/bitbucket
+export repos="${HOME}"/repos
+export github="${repos}"/github
+alias github='cd $github'
+export bitbucket="${repos}"/bitbucket
 alias bitb='cd $bitbucket'
 # clashes with bitbucket-cli
 #alias bitbucket='cd $bitbucket'
+export gitlab="${repos}"/gitlab
+alias gitlab='cd $gitlab'
+
 # used to gitbrowse to bitbucket now in git.sh
 #alias bb=bitbucket
 
-for basedir in "${github}" "${bitbucket}"; do
+for basedir in "${github}" "${bitbucket}" "${gitlab}"; do
     if [[ -d "${basedir}" ]]; then
         for directory in "${basedir}/"*; do
             [[ -d "${directory}" ]] || continue
@@ -212,7 +192,7 @@ doc_alias() {
     alias "d${docfile}"="ti ${docpath##*/}; \$EDITOR ${docpath}"
 }
 
-for x in ~/docs/* "${github}"/docs/* "${bitbucket}"/docs/*; do
+for x in ~/docs/* "${github}"/docs/* "${bitbucket}"/docs/* "${gitlab}"/docs/*; do
     doc_alias "${x}" || :
 done
 
@@ -245,10 +225,6 @@ else
     done
 fi
 alias pmd='$pmd'
-
-# from DevOps Perl tools repo - like uniq but doesn't require pre-sorting keeps the original ordering
-# Devops Golang tools uniq2 should be on path instead now
-#alias uniq2=uniq_order_preserved.pl
 
 # for piping from grep
 alias uniqfiles="sed 's/:.*//;/^[[:space:]]*$/d' | sort -u"
@@ -294,11 +270,6 @@ alias todo='ti T; $EDITOR ~/TODO'
 alias TODO="todo"
 alias don='ti D; $EDITOR ~/DONE'
 alias DON=don
-
-# drive => Google Drive
-export google_drive=~/drive
-export drive="${google_drive}"
-alias drive='cd "$drive"'
 
 for v in ~/github/pytools/validate_*.py; do
     z="${v##*/}"

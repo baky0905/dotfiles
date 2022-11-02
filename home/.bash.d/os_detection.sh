@@ -11,7 +11,6 @@ get_os() {
         ! [[ "${operating_system}" =~ ^(Linux|Darwin)$ ]]; then
         operating_system="$(uname -s)"
         export operating_system
-        echo "${operating_system}"
     fi
 }
 

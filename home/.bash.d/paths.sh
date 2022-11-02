@@ -45,8 +45,8 @@ add_PATH() {
     # to prevent Empty compile time value given to use lib at /Users/hari/perl5/lib/perl5/perl5lib.pm line 17.
     #PERL5LIB="${PERL5LIB##:}"
     # fix for Codeship having a space after one of the items in their $PATH, causing the second half of the $PATH to error out as a command
-    eval "${env_var}"="${!env_var//[[:space:]]/}"
-    eval "${env_var}"="${!env_var##:}"
+    #eval "${env_var}"="${!env_var//[[:space:]]/}"
+    #eval "${env_var}"="${!env_var##:}"
     export "${env_var?env_var not defined in add_PATH}"
 }
 
@@ -85,16 +85,6 @@ for x in ~/bin/*; do
         add_PATH "${x}"
     fi
 done
-
-# Serverless.com framework
-if [[ -d ~/.serverless/bin ]]; then
-    add_PATH ~/.serverless/bin
-fi
-
-# HomeBrew on Linux
-if [[ -d ~/.linuxbrew/bin ]]; then
-    add_PATH ~/.linuxbrew/bin
-fi
 
 # AWS CLI Linux install location
 if [[ -d ~/.local/bin ]]; then
