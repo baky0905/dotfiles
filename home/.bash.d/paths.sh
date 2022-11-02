@@ -45,8 +45,8 @@ add_PATH() {
     # to prevent Empty compile time value given to use lib at /Users/hari/perl5/lib/perl5/perl5lib.pm line 17.
     #PERL5LIB="${PERL5LIB##:}"
     # fix for Codeship having a space after one of the items in their $PATH, causing the second half of the $PATH to error out as a command
-    #eval "${env_var}"="${!env_var//[[:space:]]/}"
-    #eval "${env_var}"="${!env_var##:}"
+    eval "${env_var}"="${!env_var//[[:space:]]/}"
+    eval "${env_var}"="${!env_var##:}"
     export "${env_var?env_var not defined in add_PATH}"
 }
 
@@ -124,23 +124,23 @@ fi
 
 # $github defined in aliases.sh
 # shellcheck disable=SC2154
-add_PATH "${github}/bash-tools"
-add_PATH "${github}/bash-tools/applescript"
-add_PATH "${github}/bash-tools/setup"
-add_PATH "${github}/go-tools"
-add_PATH "${github}/go-tools/bin"
-add_PATH "${github}/perl-tools"
-add_PATH "${github}/pytools"
-add_PATH "${github}/tools"
-#add_PATH "$github/tool"
-add_PATH "${github}/nagios-plugins"
-add_PATH "${github}/nagios-plugin-kafka"
-add_PATH "${github}/spotify"
-add_PATH "${github}/spotify-tools"
+# add_PATH "${github}/bash-tools"
+# add_PATH "${github}/bash-tools/applescript"
+# add_PATH "${github}/bash-tools/setup"
+# add_PATH "${github}/go-tools"
+# add_PATH "${github}/go-tools/bin"
+# add_PATH "${github}/perl-tools"
+# add_PATH "${github}/pytools"
+# add_PATH "${github}/tools"
+# #add_PATH "$github/tool"
+# add_PATH "${github}/nagios-plugins"
+# add_PATH "${github}/nagios-plugin-kafka"
+# add_PATH "${github}/spotify"
+# add_PATH "${github}/spotify-tools"
 
-if is_linux; then
-    add_PATH ~/.buildkite-agent/bin
-fi
+# if is_linux; then
+#     add_PATH ~/.buildkite-agent/bin
+# fi
 
 # ============================================================================ #
 
