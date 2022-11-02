@@ -77,14 +77,14 @@ add_PATH ~/.jx/bin
 #add_PATH "${JX_HOME:-$HOME/.jx}/bin"
 add_PATH "${bash_tools}"
 add_PATH ~/bin
-for x in ~/bin/*; do
-    [[ -d "${x}" ]] || continue
-    if [[ -d "${x}/bin" ]]; then
-        add_PATH "${x}/bin"
-    else
-        add_PATH "${x}"
-    fi
-done
+# for x in ~/bin/*; do
+#     [[ -d "${x}" ]] || continue
+#     if [[ -d "${x}/bin" ]]; then
+#         add_PATH "${x}/bin"
+#     else
+#         add_PATH "${x}"
+#     fi
+# done
 
 # AWS CLI Linux install location
 if [[ -d ~/.local/bin ]]; then
