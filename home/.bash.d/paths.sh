@@ -35,7 +35,7 @@ add_PATH() {
     fi
     path="${path%/}"
     path="${path//[[:space:]]/}"
-    if ! [[ "${!env_var}" =~ (^|:)${path}(:|$) ]]; then
+    if ! [[ "${!env_var}" =~ \(^|:\)${path}\(:|$\) ]]; then
         # shellcheck disable=SC2140
         eval "${env_var}"="${!env_var}:${path}"
     fi
