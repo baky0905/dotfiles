@@ -3,7 +3,7 @@
 #                         G e n e r a l   A l i a s e s
 # ============================================================================ #
 
-bash_tools="${bash_tools:-$(dirname "${BASH_SOURCE[0]}")/..}"
+bash_tools="${HOME}/.dotfiles/home"
 
 # shellcheck disable=SC1090
 . "${bash_tools}/.bash.d/os_detection.sh"
