@@ -11,6 +11,7 @@ get_os() {
         ! [[ "${operating_system}" =~ ^(Linux|Darwin)$ ]]; then
         operating_system="$(uname -s)"
         export operating_system
+        echo "${operating_system}"
     fi
 }
 
@@ -21,6 +22,7 @@ isLinux() {
         export LINUX=1
         return 0
     fi
+
     return 1
 }
 
