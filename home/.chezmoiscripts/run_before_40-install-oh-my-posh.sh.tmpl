@@ -17,7 +17,7 @@ else
     sudo mkdir "${poshthemes_dir}"
 fi
 
-wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O "${poshthemes_dir}"/themes.zip
-unzip "${poshthemes_dir}"/themes.zip -d "${poshthemes_dir}"
-chmod u+rw "${poshthemes_dir}"/*.omp.*
-rm "${poshthemes_dir}"/themes.zip
+sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O "${poshthemes_dir}"/themes.zip
+sudo unzip "${poshthemes_dir}"/themes.zip -d "${poshthemes_dir}"
+sudo chmod u+rw "${poshthemes_dir}"/*.omp.*
+sudo rm "${poshthemes_dir}"/themes.zip
