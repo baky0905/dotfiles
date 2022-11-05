@@ -6,8 +6,8 @@
 true || source ../.chezmoitemplates/scripts-library
 
 bash_it="${HOME}"/.bash-it
-if [[ -f "${bash_it}" ]]; then
-    sudo rm "${bash_it}"
+if [[ -d "${bash_it}" ]]; then
+    sudo rm -rf "${bash_it}"
 fi
 
 git clone --depth=1 https://github.com/Bash-it/bash-it ~/.bash-it
