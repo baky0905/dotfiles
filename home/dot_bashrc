@@ -291,3 +291,9 @@ if ! shopt -oq posix; then
         . /etc/bash_completion
     fi
 fi
+
+# oh-my-posh https://ohmyposh.dev/docs/installation/prompt
+# https://learn.microsoft.com/en-us/windows/terminal/tutorials/custom-prompt-setup#customize-your-wsl-prompt-with-oh-my-posh
+
+eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/slim.omp.json)"
+#exec bash

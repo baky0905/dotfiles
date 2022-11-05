@@ -44,9 +44,3 @@ export EDITOR="{{ .editor }}"
 # {{ if .is_wsl }}
 export BROWSER="wslview"
 # {{ end }}
-
-# oh-my-posh https://ohmyposh.dev/docs/installation/prompt
-# https://learn.microsoft.com/en-us/windows/terminal/tutorials/custom-prompt-setup#customize-your-wsl-prompt-with-oh-my-posh
-
-eval "$(oh-my-posh --init --shell bash --config ~/.atomic.omp.json)"
-exec bash

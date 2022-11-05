@@ -21,3 +21,7 @@ sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/
 sudo unzip "${poshthemes_dir}"/themes.zip -d "${poshthemes_dir}"
 sudo chmod u+rw "${poshthemes_dir}"/*.omp.*
 sudo rm "${poshthemes_dir}"/themes.zip
+
+sudo add-apt-repository universe
+sudo apt update
+sudo apt install fonts-firacode
