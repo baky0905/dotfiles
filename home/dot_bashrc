@@ -292,8 +292,6 @@ if ! shopt -oq posix; then
     fi
 fi
 
-# oh-my-posh https://ohmyposh.dev/docs/installation/prompt
-# https://learn.microsoft.com/en-us/windows/terminal/tutorials/custom-prompt-setup#customize-your-wsl-prompt-with-oh-my-posh
-
-eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/slim.omp.json)"
-#exec bash
+# Use the "powerline-multiline" theme
+#LC_ALL=en_US.UTF-8
+export BASH_IT_THEME="powerline-multiline"
