@@ -11,9 +11,9 @@ sudo chmod +x /usr/local/bin/oh-my-posh
 
 poshthemes_dir="${HOME}"/.poshthemes
 if [[ -f "${poshthemes_dir}" ]]; then
-    rm -rf "${poshthemes_dir}"
+    sudo rm -rf "${poshthemes_dir}"
 else
-    mkdir "${poshthemes_dir}"
+    sudo mkdir "${poshthemes_dir}"
 fi
 
 wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O "${poshthemes_dir}"/themes.zip
