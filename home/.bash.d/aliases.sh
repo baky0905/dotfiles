@@ -230,7 +230,7 @@ alias pmd='$pmd'
 # for piping from grep
 alias uniqfiles="sed 's/:.*//;/^[[:space:]]*$/d' | sort -u"
 
-export etc=~/etc
+export etc=/etc
 alias etc='cd $etc'
 
 alias distro='cat /etc/*release /etc/*version 2>/dev/null'
@@ -243,7 +243,7 @@ alias t3='$EDITOR ~/tmp3'
 #alias tg='traceroute www.google.com'
 #alias sec='ps -ef| grep -e arpwatc[h] -e swatc[h] -e scanlog[d]'
 
-export lab=~/lab
+export lab=/lab
 alias lab='cd $lab'
 
 # Auto-alias uppercase directories in ~ like Desktop and Downloads
@@ -264,7 +264,7 @@ export desk="${desktop}"
 alias desktop='cd "$desktop"'
 alias desk=desktop
 
-export bin=~/bin
+export bin=/bin
 alias bin="cd ${bin}"
 
 alias todo='ti T; $EDITOR ~/TODO'
