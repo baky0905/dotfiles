@@ -8,7 +8,7 @@
 bash_tools="${HOME}/.dotfiles/home"
 
 # shellcheck disable=SC1090
-. "${bash_tools}"/.bash.d/os_detection.sh
+. "${bash_tools}/.bash.d/os_detection.sh"
 
 # shellcheck disable=SC1090
 [ -f ~/.docker_vars ] && . ~/.docker_vars
