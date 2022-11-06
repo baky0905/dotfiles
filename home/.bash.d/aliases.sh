@@ -130,6 +130,7 @@ alias run='run.sh'
 #                      G i t H u b   /   B i t B u c k e t / G i t L a b
 # ============================================================================ #
 export repos="${HOME}"/repos
+alias repos="${repos}"
 export github="${repos}"/github
 alias github='cd $github'
 export bitbucket="${repos}"/bitbucket

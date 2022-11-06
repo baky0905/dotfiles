@@ -7,16 +7,6 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
-
-# ============================================================================ #
-#                     BASH - Heavily Customized Environment
-# ============================================================================ #
-
-# Sources thousands of lines of Bash code written over the course of ~15+ years
-# some of which is now found in this GitHub repo's .bash.d/*.sh
-
-# ============================================================================ #
-#
 # put this at the top of your ~/.bashrc to inherit the goodness here (assuming you've checked out this repo to ~/github/bash-tools):
 #
 #   if [ -f ~/github/bash-tools/.bashrc ]; then

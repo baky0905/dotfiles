@@ -107,7 +107,7 @@ alias path='echo -e ${PATH//:/\\n}'
 
 # Displays information about the system.
 for command in winfetch neofetch screenfetch; do
-    if type "$command" &>/dev/null; then
+    if type "${command}" &>/dev/null; then
         alias sysinfo='$command'
         break
     fi
@@ -121,13 +121,9 @@ alias dk='docker'
 alias dco='docker-compose'
 
 # Creates shortcut for Git.
-g() {
-    git
-}
-
-ga() {
-    git add .
-}
+alias g='git'
+alias ga='git add .'
+alias gp='git push'
 
 gc() {
     git commit -m "${1}"
@@ -138,10 +134,20 @@ gac() {
     git commit -m "${1}"
 }
 
-# Activates Python virtual environment `venv`.
-alias va='if [ -d ./.venv ]; then \. ./.venv/bin/activate; elif [ -d ./venv ]; then \. ./venv/bin/activate; fi'
+gcl() {
+    git clone "${1}"
+}
+
+gcb() {
+    git checkout -b "${1}"
+}
+
+# Creates shortcut for python
 
 # Creates Python virtual environment `venv`.
 alias ve='python3 -m venv ./.venv'
+
+# Activates Python virtual environment `venv`.
+alias va='if [ -d ./.venv ]; then \. ./.venv/bin/activate; elif [ -d ./venv ]; then \. ./venv/bin/activate; fi'
 
 # {{ end }}
