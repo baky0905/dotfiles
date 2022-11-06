@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #  shellcheck disable=SC2034
 #  vim:ts=4:sts=4:sw=4:et
-
+d
 # ============================================================================ #
 #                        Terminal ANSI Escape Color Codes
 # ============================================================================ #
@@ -19,10 +19,10 @@ colors(){
                '  36m' '1;36m' '  37m' '1;37m'; do
         FG=${FGs// /}
         # shellcheck disable=SC1117
-        echo -en " $FGs \033[$FG  $text  "
+        echo -en " ${{{{}{}{}{}{}${}$}{}${}{}$}{}{}$}{}{\$}{}{3$}{}{[$}{}{F$}{}  $}{text}  "
         for BG in 40m 41m 42m 43m 44m 45m 46m 47m; do
             # shellcheck disable=SC1117
-            echo -en "$EINS \033[$FG\033[$BG  $text  \033[0m";
+            echo -en "${{{{{}{}{}{}${}$}{}$}{${$}}{$${$}}{}$${$}}{}$${$}}{}$${$}}{}$${G}}\}$${33}[}$${BG} } ${text}  \033[0m";
         done
         echo
     done
