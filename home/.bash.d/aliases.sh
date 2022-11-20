@@ -31,20 +31,12 @@ alias screenrc='$EDITOR $bash_tools/.screenrc'
 alias aliases='$EDITOR $bashd/aliases.sh'
 alias ae=aliases
 alias be=bashrc
-alias be2=bashrc2
-alias be3=bashrc3
-alias ve=vimrc
-alias se=screenrc
 
 # not present on Mac
 #type tailf &>/dev/null || alias tailf="tail -f"
 alias tailf="tail -f" # tail -f is better than tailf anyway
 alias mv='mv -i'
 alias cp='cp -i'
-#alias rm='rm -i'
-# allows to re-use custommized less behaviour throughout profile without duplicating options
-#less='less -RFXig'
-#alias less='$less'
 export LESS="-RFXig --tabs=4"
 # will require LESS="-R"
 if type -P pygmentize &>/dev/null; then
@@ -168,64 +160,7 @@ for basedir in "${github}" "${bitbucket}" "${gitlab}"; do
     fi
 done
 
-doc_alias() {
-    local docpath="$1"
-    [[ -f "${docpath}" ]] || return 1
-    docfile="${docpath##*/}"
-    # slows down shell creation, will drain battery
-    #    if [ -L "$docpath" ]; then
-    #        # brew install coreutils to get greadlink since Mac doesn't have readlink -f
-    #        if type -P greadlink &>/dev/null; then
-    #            docfile="$(greadlink -f "$docpath")"
-    #        else
-    #            docfile="$(readlink -f "$docpath")"
-    #        fi
-    #    fi
-    #local count=0
-    #[ -f ~/docs/$docfile ] && ((count+=1))
-    #[ -f "$github/docs/$docfile" ] && ((count+=1))
-    #[ -f "$bitbucket/docs/$docfile" ] && ((count+=1))
-    #if [ $count -gt 1 ]; then
-    #    echo "WARNING: $docfile conflicts with existing alias, duplicate doc '$docfile' among ~/docs, ~/github/docs, ~/bitbucket/docs?"
-    #    return
-    #fi
-    # shellcheck disable=SC2139,SC2140
-    alias "d${docfile}"="ti ${docpath##*/}; \$EDITOR ${docpath}"
-}
-
-for x in ~/docs/* "${github}"/docs/* "${bitbucket}"/docs/* "${gitlab}"/docs/*; do
-    doc_alias "${x}" || :
-done
-
 # ============================================================================ #
-
-# set in ansible.sh
-#alias a='ansible -Db'
-alias anonymize='anonymize.py'
-alias an='anonymize -a'
-alias bc='bc -l'
-alias chromekill='pkill -f "Google Chrome Helper"'
-alias eclipse='~/eclipse/Eclipse.app/Contents/MacOS/eclipse'
-alias visualvm='~/visualvm/bin/visualvm'
-
-alias tmpl=templates
-
-# using brew version on Mac
-pmd_opts="-R rulesets/java/quickstart.xml -f text"
-if is_mac; then
-    # yes evaluate $pmd_opts here
-    # shellcheck disable=SC2139
-    pmd="pmd ${pmd_opts}"
-else
-    for x in ~/pmd-bin-*; do
-        if [[ -f "${x}/bin/run.sh" ]]; then
-            # yes evaluate $x here, and don't export it's lazy evaluated in alias below
-            # shellcheck disable=SC2139,SC2034
-            pmd="${x}/bin/run.sh pmd ${pmd_opts}"
-        fi
-    done
-fi
-alias pmd='$pmd'
 
 # for piping from grep
 alias uniqfiles="sed 's/:.*//;/^[[:space:]]*$/d' | sort -u"
@@ -246,53 +181,5 @@ alias t3='$EDITOR ~/tmp3'
 export lab=/lab
 alias lab='cd $lab'
 
-# Auto-alias uppercase directories in ~ like Desktop and Downloads
-#for dir in $(find ~ -maxdepth 1 -name '[A-Z]*' -type d); do [ -d "$dir" ] && alias ${dir##*/}="cd '$dir'"; done
-
-export Downloads=~/Downloads
-export Documents=~/Documents
-alias Downloads='cd "$Downloads"'
-alias Documents='cd "$Documents"'
-export down="${Downloads}"
-export docu="${Documents}"
-alias down='cd "$Downloads"'
-alias docu='cd "$Documents"'
-alias doc='cd ~/docs'
-
-export desktop=~/Desktop
-export desk="${desktop}"
-alias desktop='cd "$desktop"'
-alias desk=desktop
-
 export bin=/bin
 alias bin="cd ${bin}"
-
-alias todo='ti T; $EDITOR ~/TODO'
-alias TODO="todo"
-alias don='ti D; $EDITOR ~/DONE'
-alias DON=don
-
-for v in ~/github/pytools/validate_*.py; do
-    z="${v##*/}"
-    z="${z#validate_}"
-    z="${z%.py}"
-    # needs to expand now for dynamic alias creation
-    # shellcheck disable=SC2139,SC2140
-    alias "v${z}"="${v}"
-done
-
-# in some environments I do ldap with Kerberos auth - see ldapsearch.sh script at top level which is more flexible with pre-tuned environment variables
-#alias ldapsearch="ldapsearch -xW"
-#alias ldapadd="ldapadd -xW"
-#alias ldapmodify="ldapmodify -xW"
-#alias ldapdelete="ldapdelete -xW"
-#alias ldappasswd="ldappasswd -xW"
-#alias ldapwhoami="ldapwhoami -xW"
-#alias ldapvi="ldapvi -b dc=domain,dc=local -D cn=admin,dc=domain,dc=local"
-
-alias fluxkeys='$EDITOR ~/.fluxbox/keys'
-alias fke=fluxkeys
-alias fluxmenu='$EDITOR ~/.fluxbox/mymenu'
-alias fme=fluxmenu
-alias mymenu=fluxmenu
-alias menu=mymenu

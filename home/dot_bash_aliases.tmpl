@@ -20,12 +20,6 @@ chezmoi-re-run-scripts() { (
 ); }
 
 # {{ if .is_wsl }}
-gsudo() {
-    local shell
-
-    shell=$(ps -p $$ -ocomm=) &&
-        gsudo.exe wsl -d "${WSL_DISTRO_NAME?}" -e "${shell}" "-c" "$*"
-}
 
 cdw() {
     local user_profile

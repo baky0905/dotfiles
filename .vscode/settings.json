@@ -338,6 +338,5 @@
     "!Select sequence",
     "!Split",
     "!Split sequence"
-  ],
-  "tabnine.experimentalAutoImports": true
+  ]
 }
