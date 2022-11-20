@@ -29,49 +29,6 @@ sh -c "$(wget -qO- https://raw.githubusercontent.com/baky0905/dotfiles/HEAD/scri
 > ```
 
 
-### Minimum mode
-
-The installation will ask if you want a **minimum mode installation**. The minimum mode only installs the needed dotfiles for the command prompt and is compatible with more distributions other than Ubuntu.
-
-It will be enabled by default when running in a Dev Container or in distributions other than Ubuntu. F
-
-## Configuring the terminal font
-
-This dotfiles uses the ZSH theme [Powerlevel10k](https://github.com/romkatv/powerlevel10k), so it requires you to install a font on your host machine with support for the [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) glyphs. I recommend the [`FiraCode Nerd Font`](https://github.com/ryanoasis/nerd-fonts/tree/HEAD/patched-fonts/FiraCode#readme).
-
-In **Ubuntu Desktop**, the dotfiles installation will take care of installing the font and set it up for you in **GNOME Terminal**.
-
-But on other systems or terminal emulators, **you will need to configure it manually**. Here are some tips:
-
-### Installing the font on **Windows**
-
-1. [Download it by clicking here](https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/FiraCode/Regular/complete/Fira%20Code%20Regular%20Nerd%20Font%20Complete.ttf).
-2. Open it and click in **_Install_**.
-3. Restart any applications that you want to load the font into.
-
-### Configuring the font in **VS Code**
-
-1. On **VS Code**, press <kbd>Ctrl</kbd>+<kbd>,</kbd> to open the settings.
-2. Search for "**Terminal Font Family**", and write `FiraCode Nerd Font` in the entry named **_Terminal › Integrated: Font Family_**. Like below:
-
-   ![VS Code font configuration example](https://user-images.githubusercontent.com/29582865/112052025-5cb5aa80-8b31-11eb-8e85-a4eb9e1a09a8.png)
-
-### Configuring the font in **Windows Terminal**
-
-1. On **Windows Terminal**, press <kbd>Ctrl</kbd>+<kbd>,</kbd> to open the settings.
-2. Go to **_Profiles -> Defaults_** in the left panel. Then, go to **_Additional settings -> Appearance_**.
-3. At **_Text -> Font face_**, enable the **_Show all fonts_** option and select **_FiraCode Nerd Font_**. Like below:
-
-   ![Windows Terminal font configuration example](https://user-images.githubusercontent.com/29582865/173674283-f6380d8c-a1ff-42b5-b963-ca578d09c2d5.png)
-
----
-
-## Documentation
-
-**If you followed the steps above so far, you already finished installing the dotfiles. Have fun!**
-
-The below information is more for reference purposes.
-
 ### Convenience script
 
 The [getting started](#getting-started) step used the [convenience script](./scripts/install_dotfiles.sh) to install this dotfiles. There are some extra options that you can use to tweak the installation if you need.
@@ -155,7 +112,3 @@ Please check the following URL for more information:
 ```bash
 scripts/create_alternative_chrome_shortcut.sh Personal
 ```
-
-##### Demo
-
-![Opening two Chrome instances using different icons](./docs/images/create_alternative_chrome_shortcut.gif)
