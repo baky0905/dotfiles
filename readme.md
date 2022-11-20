@@ -8,9 +8,7 @@ https://github.com/tcardonne/dotfiles
 
 sudo sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /usr/local/bin
 
-This dotfiles repository is currently aimed for [**Ubuntu on WSL**](https://ubuntu.com/wsl), [**Ubuntu Server**](https://ubuntu.com/server), and [**Ubuntu Desktop**](https://ubuntu.com/desktop), tested against versions **18.04**, **20.04**, and **22.04**. See how to get started with WSL [here](https://docs.microsoft.com/pt-br/windows/wsl/install-win10).
-
-It's also suitable for use in [**GitHub Codespaces**](https://docs.github.com/codespaces/customizing-your-codespace/personalizing-codespaces-for-your-account#dotfiles), [**Gitpod**](https://www.gitpod.io/docs/config-dotfiles), [**VS Code Remote - Containers**](https://code.visualstudio.com/docs/remote/containers#_personalizing-with-dotfile-repositories), or even Linux distribution that are not Ubuntu, through the [**minimum mode**](#minimum-mode).
+This dotfiles repository is currently aimed for [**Ubuntu on WSL**](https://ubuntu.com/wsl)
 
 Managed with [`chezmoi`](https://chezmoi.io), a great dotfiles manager.
 
@@ -84,31 +82,3 @@ bash -c "$(curl -fsSL "https://raw.githubusercontent.com/baky0905/dotfiles/main/
 
 Just replace `<script-name>` and `<arguments>` with the desired values. Example:
 
-```bash
-bash -c "$(curl -fsSL "https://raw.githubusercontent.com/baky0905/dotfiles/master/scripts/create_alternative_chrome_shortcut.sh")" -- --force
-```
-
-#### [`create_alternative_chrome_shortcut.sh`](scripts/create_alternative_chrome_shortcut.sh)
-
-##### Usage
-
-```sh-session
-$ scripts/create_alternative_chrome_shortcut.sh --help
-Usage: scripts/create_alternative_chrome_shortcut.sh [-f|--(no-)force] [-h|--help] [<display-name>]
-        <display-name>: The name which will be displayed in the app launcher (default: 'Alternative')
-        -f, --force, --no-force: Do not ask for confirmation (off by default)
-        -h, --help: Prints help
-
-This script creates a new shortcut for Google Chrome which opens using a
-different user data directory. This lets you have different icons for different
-instances of Google Chrome.
-
-Please check the following URL for more information:
-  https://github.com/baky0905/dotfiles#create_alternative_chrome_shortcutsh
-```
-
-##### Examples
-
-```bash
-scripts/create_alternative_chrome_shortcut.sh Personal
-```
